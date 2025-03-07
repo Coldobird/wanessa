@@ -1,0 +1,54 @@
+:root {
+  --background-color: #fff;
+  --main-color: #A8B49C;
+  --accent-color: #AE5027;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+div#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow: clip auto;
+  background-color: var(--background-color);
+}
+
+div#root .section {
+  width: 100%;
+  box-sizing: border-box;
+  padding-inline: 18px;
+}
+
+h1 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 12px;
+}
+
+button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+
+button:not(.hamburguer) {
+  border-radius: 9999px;
+  width: 75%;
+
+  background-color: var(--main-color);
+  padding: 8px 16px;
+}
