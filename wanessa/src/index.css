@@ -1,7 +1,16 @@
 :root {
-  --background-color: #fff;
+  /* --background-color: #fff;
   --main-color: #A8B49C;
   --accent-color: #AE5027;
+  --main2-color: #EFE7DF;
+  --strong-color: #5B0B0B; */
+
+  --background-color: #EFE7DF;
+  --main-color: #A8B49C;
+  --accent-color: #AE5027;
+  --accent-color2: #DB9262;
+  --main2-color: #EFE7DF;
+  --strong-color: #5B0B0B;
 }
 
 body {
@@ -28,11 +37,15 @@ div#root .section {
 }
 
 h1 {
-  font-size: 16px;
+  font-size: 18px;
+  text-align: center;
+  margin: 6px 0;
+
 }
 
 p {
   font-size: 12px;
+  margin: 6px 0;
 }
 
 button {
@@ -43,6 +56,8 @@ button {
   height: fit-content;
   min-height: 40px;
   box-sizing: border-box;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 button:not(.hamburguer) {
