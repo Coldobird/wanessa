@@ -2,8 +2,10 @@ hero-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 200vh;
+  height: 100dvh;
+  min-height: calc(100dvh - 70px);
   box-sizing: border-box;
+  padding-top: 0 !important;
 
   background-color: var(--accent-color);
   color: #fff;
@@ -30,6 +32,8 @@ hero-picture {
 
   position: relative;
   z-index: 1;
+
+  margin-bottom: 18px;
 }
 
 hero-picture::before {
@@ -65,6 +69,11 @@ hero-picture::after {
   aspect-ratio: 1/1;
   object-fit: cover;
 }
-hero-container button {
-  margin-top: 24px;
+
+hero-container p {
+  margin: 6px 0;
+}
+
+hero-container h1 {
+  margin: 6px 0;
 }

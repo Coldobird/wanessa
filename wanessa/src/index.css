@@ -5,12 +5,14 @@
   --main2-color: #EFE7DF;
   --strong-color: #5B0B0B; */
 
-  --background-color: #EFE7DF;
-  --main-color: #A8B49C;
-  --accent-color: #AE5027;
-  --accent-color2: #DB9262;
-  --main2-color: #EFE7DF;
-  --strong-color: #5B0B0B;
+  --background-color: hsl(36, 33%, 90%);
+  --main-color: hsl(90, 14%, 68%);
+  --main3-color: hsla(90, 14%, 68%, 0.23);
+  --accent-color: hsl(15, 63%, 42%);
+  --accent-color2: hsl(24, 65%, 61%);
+  --accent-color3: hsl(15, 63%, 62%);
+  --main2-color: hsl(36, 33%, 90%);
+  --strong-color: hsl(0, 83%, 18%);
 }
 
 body {
@@ -31,21 +33,30 @@ div#root {
 }
 
 div#root .section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   box-sizing: border-box;
-  padding-inline: 18px;
+  padding: 24px 18px;
 }
 
 h1 {
   font-size: 18px;
   text-align: center;
-  margin: 6px 0;
+  margin: 6px 0 18px 0;
+}
 
+h2 {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  margin: 6px 0;
 }
 
 p {
   font-size: 12px;
-  margin: 6px 0;
+  margin: 0;
 }
 
 button {
@@ -58,6 +69,11 @@ button {
   box-sizing: border-box;
   font-weight: bold;
   font-size: 16px;
+}
+
+button.main-btn {
+  color: var(--main2-color);
+  margin-top: 24px;
 }
 
 button:not(.hamburguer) {

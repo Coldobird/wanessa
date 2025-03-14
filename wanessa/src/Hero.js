@@ -15,7 +15,7 @@ function Hero() {
       <p>🌿 Redução da ansiedade, estresse e sobrecarga emocional</p>
       <p>💬 Melhora na comunicação e nos relacionamentos</p>
       <p>✨ Mais autoconhecimento e autoestima</p>
-      <button>Agende uma sessão</button>
+      <button className='main-btn'>Agende uma sessão</button>
     </hero-container>
   );
 }

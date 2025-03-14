@@ -5,7 +5,7 @@ function Treatments() {
     <treatments-container className="section">
       <h1>Cuidar da mente é um ato de coragem. Vamos dar esse passo juntos?</h1>
       <TreatmentCard></TreatmentCard>
-      <button>Agende uma sessão</button>
+      <button className='main-btn'>Agende uma sessão</button>
     </treatments-container>
   );
 }

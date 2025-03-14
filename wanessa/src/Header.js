@@ -4,7 +4,7 @@ import './Header.css';
 
 function Header() {
   return (
-    <header-container className="section">
+    <header-container>
         <img src={mainLogo} className='wanessaLogo' alt="Wanessa logo" />
         <button className="hamburguer">
           <img src={hamburgerMenu} className='hamburgerMenu' alt="hamburger menu" />
