@@ -1,31 +1,32 @@
-import mainLogo from './images/mainLogo.svg';
 import TreatmentCard from "./TreatmentCard.js";
 
-function Treatments() {
+function TimeLine() {
   return (
-    <treatments-container className='section'>
+    <time-line-container className='section'>
       <h1>Cuidar da mente é um ato de coragem. Vamos dar esse passo juntos?</h1>
       <TreatmentCard
-        img={mainLogo}
-        title="Lorem ipsum dolor sit amet consectetur"
+        title="1. Começo"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
       />
       <TreatmentCard
-        img={mainLogo}
-        title="Lorem ipsum dolor sit amet consectetur"
+        title="2. Passo 2"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
       />
       <TreatmentCard
-        img={mainLogo}
-        title="Lorem ipsum dolor sit amet consectetur"
+        title="3. Passo 3"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
+      />
+      <TreatmentCard
+        title="4. Ultimo Passo"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
       />
       <button className='main-btn'>Agende uma sessão</button>
-    </treatments-container>
+    </time-line-container>
   );
 }
 
-export default Treatments;
+export default TimeLine;

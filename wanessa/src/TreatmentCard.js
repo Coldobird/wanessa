@@ -1,16 +1,23 @@
-import mainLogo from './images/mainLogo.svg';
 import './TreatmentCard.css';
+import mainLogo from './images/star.svg';
 
-
-function TreatmentCard(img, title, description) {
+function TreatmentCard({ img, title, description, stars }) {
   return (
     <treatments-card>
       <card-head>
-        <img src={mainLogo} alt="section img" />
-        <h2>Lorem ipsum dolor sit amet consectetur</h2>
+        {img && <img src={img} alt="section img" />}
+        <h2>{title}</h2>
       </card-head>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+      <p>{description}</p>
+      {stars &&
+        <star-container>
+          <img src={mainLogo} className='star' alt="5 stars" />
+          <img src={mainLogo} className='star' alt="5 stars" />
+          <img src={mainLogo} className='star' alt="5 stars" />
+          <img src={mainLogo} className='star' alt="5 stars" />
+          <img src={mainLogo} className='star' alt="5 stars" />
+        </star-container>
+      }
     </treatments-card>
   );
 }
