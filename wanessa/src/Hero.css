@@ -8,7 +8,7 @@ hero-container {
   padding-top: 0 !important;
 
   background-color: var(--accent-color);
-  color: #fff;
+  color: var(--background-color);
 }
 
 picture {
@@ -16,14 +16,6 @@ picture {
   margin-right: -46px;
   position: relative;
 }
-
-/* hero-picture {
-  display: flex;
-  width: 100vw;
-  justify-content: flex-end;
-  background-image: url('./images/Pattern.svg');
-  background-size: 64px;
-} */
 
 hero-picture {
   display: flex;

@@ -1,5 +1,6 @@
 import heroImg from './images/hero.jxl';
 import heroWebp from './images/fallback/hero4.png';
+import './About.css';
 
 function About() {
   return (

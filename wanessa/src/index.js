@@ -9,6 +9,7 @@ import Treatments from './Treatments.js';
 import TimeLine from './TimeLine.js';
 import SocialProof from './SocialProof.js';
 import About from './About.js';
+import Footer from './Footer.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +20,7 @@ root.render(
     <TimeLine />
     <SocialProof />
     <About />
+    <Footer />
   </React.StrictMode>
 );
 
