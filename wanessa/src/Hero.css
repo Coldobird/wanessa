@@ -51,7 +51,7 @@ hero-picture::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to top, #AE5027 1%, #f3000000 25%);
+  background: linear-gradient(to top, var(--accent-color) 1%, #f3000000 25%);
   pointer-events: none;
   /* Allows interaction with the image */
 }

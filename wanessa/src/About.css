@@ -1,3 +1,11 @@
 about-container {
   flex-direction: column;
 }
+
+title-container {
+  margin-bottom: 8px;
+}
+
+about-container h1 {
+  margin-bottom: 0;
+}

@@ -1,0 +1,30 @@
+cards-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+line-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-self: anchor-center;
+  width: 2px;
+  height: 79.5%;
+  background-color: var(--accent-color);
+  position: absolute;
+}
+
+cards-container treatments-card {
+  margin-bottom: 0;
+}
+
+dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+}

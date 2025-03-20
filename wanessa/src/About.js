@@ -9,8 +9,10 @@ function About() {
         <source srcSet={heroImg} type="image/jxl" />
         <img src={heroWebp} className="hero-image" alt="Hero" />
       </picture>
+      <title-container>
       <h1>Wanessa Nardo</h1>
       <h2>Psicóloga</h2>
+      </title-container>
       <p>- Lorem ipsum dolor sit amet</p>
       <p>- Lorem ipsum dolor sit amet</p>
       <p>- Lorem ipsum dolor sit amet</p>

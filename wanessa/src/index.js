@@ -10,10 +10,12 @@ import TimeLine from './TimeLine.js';
 import SocialProof from './SocialProof.js';
 import About from './About.js';
 import Footer from './Footer.js';
+import HamburgerMenu from './HamburgerMenu.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* <HamburgerMenu /> */}
     <Header />
     <Hero />
     <Treatments />
