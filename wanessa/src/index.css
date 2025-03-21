@@ -89,7 +89,7 @@ button.main-btn {
   margin-top: 24px;
 }
 
-button:not(.hamburguer) {
+button:not(.hamburguer, .close) {
   border-radius: 9999px;
   width: 75%;
 
