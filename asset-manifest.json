@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wanessa/static/css/main.53e493bc.css",
-    "main.js": "/wanessa/static/js/main.1d50314b.js",
+    "main.css": "/wanessa/static/css/main.ca229c47.css",
+    "main.js": "/wanessa/static/js/main.fb037637.js",
     "static/js/453.aa81b95e.chunk.js": "/wanessa/static/js/453.aa81b95e.chunk.js",
     "static/media/hero4.png": "/wanessa/static/media/hero4.280ebb6b325e24cd8cd1.png",
     "static/media/hero.jxl": "/wanessa/static/media/hero.57f06392c0847054d604.jxl",
@@ -10,12 +10,12 @@
     "index.html": "/wanessa/index.html",
     "static/media/star.svg": "/wanessa/static/media/star.532754df61a3e043d8d478a9d1c6001c.svg",
     "static/media/hamburgerMenu.svg": "/wanessa/static/media/hamburgerMenu.934e4ce7df55a41112795f683d22ad89.svg",
-    "main.53e493bc.css.map": "/wanessa/static/css/main.53e493bc.css.map",
-    "main.1d50314b.js.map": "/wanessa/static/js/main.1d50314b.js.map",
+    "main.ca229c47.css.map": "/wanessa/static/css/main.ca229c47.css.map",
+    "main.fb037637.js.map": "/wanessa/static/js/main.fb037637.js.map",
     "453.aa81b95e.chunk.js.map": "/wanessa/static/js/453.aa81b95e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.53e493bc.css",
-    "static/js/main.1d50314b.js"
+    "static/css/main.ca229c47.css",
+    "static/js/main.fb037637.js"
   ]
 }
