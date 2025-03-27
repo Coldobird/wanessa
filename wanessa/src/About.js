@@ -1,5 +1,5 @@
 import heroImg from './images/hero.jxl';
-import heroWebp from './images/fallback/hero4.png';
+import aboutImg from './images/about.webp';
 import './About.css';
 
 function About() {
@@ -7,7 +7,7 @@ function About() {
     <about-container className='section'>
       <picture>
         <source srcSet={heroImg} type="image/jxl" />
-        <img src={heroWebp} className="hero-image" alt="Hero" />
+        <img src={aboutImg} className="about-image" alt="Hero" />
       </picture>
       <title-container>
       <h1>Wanessa Nardo</h1>

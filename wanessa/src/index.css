@@ -25,6 +25,7 @@
   --strong-color: hsl(0, 83%, 18%);
 
   --gradient-bg: linear-gradient(145deg, var(--accent2-color) 20%, var(--accent3-color) 50%, var(--accent2-color) 80%);
+  --about-gradient-bg: linear-gradient(180deg , var(--background-color) 15%, var(--accent-color) 0);
 }
 
 body {

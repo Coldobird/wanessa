@@ -35,9 +35,15 @@ function Header() {
         <img src={hamburgerMenu} className='hamburgerMenu' alt="hamburger menu" />
       </button>
 
+      <darken-layer className={isOpen ? 'open' : ''}></darken-layer>
+
       <hamburger-container ref={menuRef} className={isOpen ? 'open' : ''}>
         <a href="#section-id">Home</a>
-        <a href="#section-id">Home</a>
+        <a href="#section-id">Sintomas</a>
+        <a href="#section-id">Como Funciona</a>
+        <a href="#section-id">Depoimentos</a>
+        <a href="#section-id">Sobre Mim</a>
+        <a href="#section-id">Agendar</a>
       </hamburger-container>
     </header-container>
   );

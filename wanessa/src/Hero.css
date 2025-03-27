@@ -11,7 +11,7 @@ hero-container {
   color: var(--background-color);
 }
 
-picture {
+hero-container picture {
   width: 90vw;
   margin-right: -46px;
   position: relative;

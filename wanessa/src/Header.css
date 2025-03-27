@@ -35,7 +35,21 @@ header-container>* {
 }
 
 
+darken-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  width: 100vw;
+  min-height: 100vh;
+  height: 100vh;
 
+  pointer-events: none;
+}
+
+darken-layer.open {
+  background: #00000080;
+}
 
 hamburger-container {
   display: flex;
@@ -48,13 +62,23 @@ hamburger-container {
   top: 0;
   z-index: 20;
   background: var(--background-color);
-  padding: 24px 18px;
+  padding: 24px 4px;
 
   transition: right cubic-bezier(0.075, 0.82, 0.165, 1) .5s;
 }
 
 hamburger-container.open {
   right: 0;
+}
+
+hamburger-container a {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: var(--on-main-color);
+  min-height: 42px;
+  box-sizing: border-box;
 }
 
 .close {

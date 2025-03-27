@@ -1,5 +1,7 @@
 about-container {
   flex-direction: column;
+  background: var(--about-gradient-bg);
+  color: var(--background-color);
 }
 
 title-container {
@@ -8,4 +10,15 @@ title-container {
 
 about-container h1 {
   margin-bottom: 0;
+}
+
+about-container picture {
+  display: flex;
+  justify-content: center;
+}
+
+about-container picture img {
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  width: 75%;
 }
