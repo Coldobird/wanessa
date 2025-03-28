@@ -11,6 +11,9 @@
   --main-color: hsl(90, 14%, 68%);
   --on-main-color: #3E4A36;
 
+  --on-container-color: rgba(225, 226, 218, 0.90);
+  --on-container-focus-color: #D8E7CB;
+
   --main2-color: hsl(36, 33%, 90%);
   --main3-color: hsla(90, 14%, 68%, 0.23);
 

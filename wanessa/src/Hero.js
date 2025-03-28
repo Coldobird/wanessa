@@ -4,7 +4,7 @@ import './Hero.css';
 
 function Hero() {
   return (
-    <hero-container className="section">
+    <hero-container className="section" id="home">
       <hero-picture>
         <picture>
           <source srcSet={heroImg} type="image/jxl" />

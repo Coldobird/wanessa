@@ -58,27 +58,39 @@ hamburger-container {
   max-height: 100%;
   min-width: 100px;
   position: fixed;
-  right: -150px;
+  right: -0;
   top: 0;
   z-index: 20;
   background: var(--background-color);
-  padding: 24px 4px;
+  padding: 24px 12px;
+  border-radius: 8px 0 0 8px;
+  box-sizing: border-box;
 
-  transition: right cubic-bezier(0.075, 0.82, 0.165, 1) .5s;
+  transition: transform cubic-bezier(0.075, 0.82, 0.165, 1) .5s;
+  transform: translateX(100%);
 }
 
 hamburger-container.open {
-  right: 0;
+  transform: translateX(0);
 }
 
-hamburger-container a {
+hamburger-container navigation-btn {
   display: flex;
   align-items: center;
-  padding: 8px 14px;
+  padding: 8px 16px;
   text-decoration: none;
   color: var(--on-main-color);
   min-height: 42px;
   box-sizing: border-box;
+  border-radius: 99999px;
+}
+
+hamburger-container navigation-btn:hover {
+  background-color: var(--on-container-color);
+}
+
+hamburger-container navigation-btn:focus {
+  background-color: var(--on-container-focus-color);
 }
 
 .close {
