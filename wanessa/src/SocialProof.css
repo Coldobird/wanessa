@@ -1,0 +1,32 @@
+carousel-container {
+  width: 200vw;
+  padding-inline: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  gap: 24px;
+  flex-direction: row;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+}
+
+carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+carousel-container > * {
+  width: 60vw;
+  flex-shrink: 0;
+  margin-inline: 0 !important;
+  scroll-snap-align: center;
+}
+
+star-container {
+  display: flex;
+  gap: 2px;
+}
+
+img.star {
+  width: 15px;
+}

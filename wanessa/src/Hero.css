@@ -1,0 +1,71 @@
+hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100dvh;
+  min-height: calc(100dvh - 70px);
+  box-sizing: border-box;
+  padding-top: 0 !important;
+
+  background-color: var(--accent-color);
+  color: var(--background-color);
+}
+
+hero-container picture {
+  width: 90vw;
+  margin-right: -46px;
+  position: relative;
+}
+
+hero-picture {
+  display: flex;
+  width: 100vw;
+  justify-content: flex-end;
+
+  position: relative;
+  z-index: 1;
+
+  margin-bottom: 18px;
+}
+
+hero-picture::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/Pattern.svg');
+  background-image: url('./images/Pattern.svg');
+  background-size: 64px;
+  background-position: center;
+  opacity: 0.15; /* Adjust opacity here */
+  z-index: -1;
+}
+
+
+hero-picture::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, var(--accent-color) 1%, #f3000000 25%);
+  pointer-events: none;
+  /* Allows interaction with the image */
+}
+
+.hero-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+hero-container p {
+  margin: 6px 0;
+}
+
+hero-container h1 {
+  margin: 6px 0;
+}
