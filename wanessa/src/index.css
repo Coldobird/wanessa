@@ -38,17 +38,13 @@ body {
   padding: 0;
   font-family: 'Roboto', sans-serif;
   color: var(--on-main-color);
-
-  display: flex;
-  flex-direction: column;
-  overflow: clip auto;
-  background-color: var(--background-color);
 }
 
 
 div#root {
   display: flex;
   flex-direction: column;
+  overflow: clip; 
   background-color: var(--background-color);
 }
 
