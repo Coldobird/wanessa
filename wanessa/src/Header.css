@@ -86,8 +86,10 @@ hamburger-container navigation-btn {
   cursor: pointer;
 }
 
-hamburger-container navigation-btn:hover {
-  background-color: var(--on-container-color);
+@media (hover: hover) and (pointer: fine) {
+  hamburger-container navigation-btn:hover {
+    background-color: var(--on-container-color);
+  }
 }
 
 hamburger-container navigation-btn:focus {

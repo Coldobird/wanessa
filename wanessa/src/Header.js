@@ -151,7 +151,7 @@ function Header() {
           onMouseDown={navigateToSection('home')}
           onTouchStart={navigateToSection('home')}
         >
-          FUNCIOANNANANNANA
+          Home
         </navigation-btn>
         <navigation-btn
           onMouseDown={navigateToSection('sintomas')}
