@@ -27,7 +27,7 @@ jobs:
         working-directory: wanessa
 
       - name: Build the project
-        run: npm run build
+        run: CI='' npm run build
         working-directory: wanessa
 
       - name: Deploy to GitHub Pages
