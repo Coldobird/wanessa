@@ -11,11 +11,14 @@ function Header() {
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const darkLayer = useRef(null);
-  
+
   // Refs to track mouse/touch release and the time the transition started.
   const releaseRef = useRef(false);
   const transitionStartRef = useRef(0);
+  const debounceTimeoutRef = useRef(null);
+  const debounceDelay = 500; // Delay in ms after closing before re-opening is allowed
 
+  // Use useLayoutEffect to measure header height after render
   useLayoutEffect(() => {
     if (headerRef.current) {
       setHeaderHeight(headerRef.current.getBoundingClientRect().height);
@@ -27,17 +30,32 @@ function Header() {
 
   const toggleMenu = (ev) => {
     ev.stopPropagation();
+
+    // Prevent opening if debounce is active (i.e. the menu was closed too recently)
+    if (!isOpen && debounceTimeoutRef.current !== null) {
+      console.log('Debounce active - ignoring toggle');
+      return;
+    }
+
     const newOpen = !isOpen;
     setIsOpen(newOpen);
     if (newOpen) {
       setJustOpened(true);
       releaseRef.current = false;
       transitionStartRef.current = Date.now();
+    } else {
+      // On close, start debounce timer so the button can't trigger an immediate re-open.
+      if (debounceTimeoutRef.current !== null) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+      debounceTimeoutRef.current = setTimeout(() => {
+        debounceTimeoutRef.current = null;
+      }, debounceDelay);
     }
   };
 
   // When the user releases the mouse or touch, check if the elapsed time
-  // is at least 400ms. If not, wait the remaining time before clearing justOpened.
+  // is at least the threshold. If not, wait the remaining time before clearing justOpened.
   const handleMouseUpOrTouchEnd = (ev) => {
     if (isOpen && justOpened) {
       releaseRef.current = true;
@@ -71,6 +89,13 @@ function Header() {
       return;
     }
     setIsOpen(false);
+    // Also start debounce timer if the menu is closed via an outside click
+    if (debounceTimeoutRef.current !== null) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+    debounceTimeoutRef.current = setTimeout(() => {
+      debounceTimeoutRef.current = null;
+    }, debounceDelay);
   };
 
   useEffect(() => {
@@ -92,6 +117,13 @@ function Header() {
           section.getClientRects()[0].top - headerHeight + root.scrollTop;
         root.scrollTo({ top: toScrollPosition, behavior: "smooth" });
         setIsOpen(false);
+        // Start debounce timer on close via navigation as well.
+        if (debounceTimeoutRef.current !== null) {
+          clearTimeout(debounceTimeoutRef.current);
+        }
+        debounceTimeoutRef.current = setTimeout(() => {
+          debounceTimeoutRef.current = null;
+        }, debounceDelay);
       }
     };
   };
