@@ -22,17 +22,16 @@ jobs:
         with:
           node-version: '18'
 
-      - name: goto project directory
-        run: cd wanessa
-
       - name: Install dependencies
         run: npm install
+        working-directory: wanessa
 
       - name: Build the project
         run: npm run build
+        working-directory: wanessa
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build  # or ./dist or ./public depending on your project
+          publish_dir: wanessa/build  # or ./dist or ./public depending on your project
