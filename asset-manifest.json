@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/wanessa/static/css/main.3cef0125.css",
+    "main.css": "/wanessa/static/css/main.f5f42d75.css",
     "main.js": "/wanessa/static/js/main.1984065e.js",
     "static/js/453.aa81b95e.chunk.js": "/wanessa/static/js/453.aa81b95e.chunk.js",
     "static/media/hero4.png": "/wanessa/static/media/hero4.280ebb6b325e24cd8cd1.png",
@@ -11,12 +11,12 @@
     "index.html": "/wanessa/index.html",
     "static/media/star.svg": "/wanessa/static/media/star.532754df61a3e043d8d478a9d1c6001c.svg",
     "static/media/hamburgerMenu.svg": "/wanessa/static/media/hamburgerMenu.934e4ce7df55a41112795f683d22ad89.svg",
-    "main.3cef0125.css.map": "/wanessa/static/css/main.3cef0125.css.map",
+    "main.f5f42d75.css.map": "/wanessa/static/css/main.f5f42d75.css.map",
     "main.1984065e.js.map": "/wanessa/static/js/main.1984065e.js.map",
     "453.aa81b95e.chunk.js.map": "/wanessa/static/js/453.aa81b95e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3cef0125.css",
+    "static/css/main.f5f42d75.css",
     "static/js/main.1984065e.js"
   ]
 }
