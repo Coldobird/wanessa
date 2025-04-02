@@ -90,10 +90,10 @@ hamburger-container navigation-btn {
   hamburger-container navigation-btn:hover {
     background-color: var(--on-container-color);
   }
-}
-
-hamburger-container navigation-btn:focus {
-  background-color: var(--on-container-focus-color);
+  
+  hamburger-container navigation-btn:focus {
+    background-color: var(--on-container-focus-color);
+  }
 }
 
 .close {

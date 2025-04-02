@@ -16,7 +16,6 @@ function Header() {
   const releaseRef = useRef(false);
   const transitionStartRef = useRef(0);
   const debounceTimeoutRef = useRef(null);
-  const debounceDelay = 500; // Delay in ms after closing before re-opening is allowed
 
   // Use useLayoutEffect to measure header height after render
   useLayoutEffect(() => {
@@ -33,7 +32,6 @@ function Header() {
 
     // Prevent opening if debounce is active (i.e. the menu was closed too recently)
     if (!isOpen && debounceTimeoutRef.current !== null) {
-      console.log('Debounce active - ignoring toggle');
       return;
     }
 
@@ -50,7 +48,7 @@ function Header() {
       }
       debounceTimeoutRef.current = setTimeout(() => {
         debounceTimeoutRef.current = null;
-      }, debounceDelay);
+      }, threshold);
     }
   };
 
@@ -95,7 +93,7 @@ function Header() {
     }
     debounceTimeoutRef.current = setTimeout(() => {
       debounceTimeoutRef.current = null;
-    }, debounceDelay);
+    }, threshold);
   };
 
   useEffect(() => {
@@ -123,7 +121,7 @@ function Header() {
         }
         debounceTimeoutRef.current = setTimeout(() => {
           debounceTimeoutRef.current = null;
-        }, debounceDelay);
+        }, threshold);
       }
     };
   };

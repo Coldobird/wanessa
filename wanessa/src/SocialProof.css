@@ -15,6 +15,10 @@ carousel-container::-webkit-scrollbar {
   display: none;
 }
 
+carousel-container {
+  scrollbar-width: none;
+}
+
 carousel-container > * {
   width: 60vw;
   flex-shrink: 0;
