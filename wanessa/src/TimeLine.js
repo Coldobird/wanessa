@@ -7,10 +7,10 @@ function TimeLine() {
       <h1>Cuidar da mente é um ato de coragem. Vamos dar esse passo juntos?</h1>
       <cards-container>
         <line-container>
-          <dot></dot>
-          <dot></dot>
-          <dot></dot>
-          <dot></dot>
+          <dot-el></dot-el>
+          <dot-el></dot-el>
+          <dot-el></dot-el>
+          <dot-el></dot-el>
         </line-container>
 
         <TreatmentCard

@@ -22,7 +22,7 @@ cards-container treatments-card {
   margin-bottom: 0;
 }
 
-dot {
+dot-el {
   width: 10px;
   height: 10px;
   background-color: var(--accent-color);

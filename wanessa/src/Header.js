@@ -1,20 +1,29 @@
 import mainLogo from './images/mainLogo.svg';
 import hamburgerMenu from './images/hamburgerMenu.svg';
 import './Header.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [justOpened, setJustOpened] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef(null);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const darkLayer = useRef(null);
-  const headerheight = headerRef.current.getBoundingClientRect().height
-
-  // Refs to track the mouse/touch release and animation end
+  
+  // Refs to track mouse/touch release and the time the transition started.
   const releaseRef = useRef(false);
-  const transitionEndedRef = useRef(false);
+  const transitionStartRef = useRef(0);
+
+  useLayoutEffect(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.getBoundingClientRect().height);
+    }
+  }, []);
+
+  const transitionDuration = 500; // in ms (0.5s)
+  const threshold = transitionDuration - 400; // 400ms threshold
 
   const toggleMenu = (ev) => {
     ev.stopPropagation();
@@ -22,19 +31,25 @@ function Header() {
     setIsOpen(newOpen);
     if (newOpen) {
       setJustOpened(true);
-      // Reset both flags when opening
       releaseRef.current = false;
-      transitionEndedRef.current = false;
+      transitionStartRef.current = Date.now();
     }
   };
 
-  // Clear the justOpened flag only when both the mouse/touch has been released
-  // and the menu animation has ended
+  // When the user releases the mouse or touch, check if the elapsed time
+  // is at least 400ms. If not, wait the remaining time before clearing justOpened.
   const handleMouseUpOrTouchEnd = (ev) => {
     if (isOpen && justOpened) {
       releaseRef.current = true;
-      if (transitionEndedRef.current) {
+      const elapsed = Date.now() - transitionStartRef.current;
+      if (elapsed >= threshold) {
         setJustOpened(false);
+      } else {
+        setTimeout(() => {
+          if (releaseRef.current) {
+            setJustOpened(false);
+          }
+        }, threshold - elapsed);
       }
     }
   };
@@ -46,26 +61,6 @@ function Header() {
       document.removeEventListener('mouseup', handleMouseUpOrTouchEnd);
       document.removeEventListener('touchend', handleMouseUpOrTouchEnd);
     };
-  }, [isOpen, justOpened]);
-
-  // Listen for the transition end on the hamburger container
-  useEffect(() => {
-    const menuElement = menuRef.current;
-    if (isOpen && menuElement) {
-      const handleTransitionEnd = (ev) => {
-        if (isOpen && justOpened) {
-          transitionEndedRef.current = true;
-          if (releaseRef.current) {
-            setJustOpened(false);
-          }
-        }
-      };
-
-      menuElement.addEventListener('transitionend', handleTransitionEnd);
-      return () => {
-        menuElement.removeEventListener('transitionend', handleTransitionEnd);
-      };
-    }
   }, [isOpen, justOpened]);
 
   const handleOutsideClick = (ev) => {
@@ -89,11 +84,12 @@ function Header() {
 
   const navigateToSection = (sectionId) => {
     return (ev) => {
-      if (justOpened) return
+      if (justOpened) return;
       const section = document.getElementById(sectionId);
       const root = document.getElementById('root');
       if (section) {
-        const toScrollPosition = section.getClientRects()[0].top - headerheight + root.scrollTop;
+        const toScrollPosition =
+          section.getClientRects()[0].top - headerHeight + root.scrollTop;
         root.scrollTo({ top: toScrollPosition, behavior: "smooth" });
         setIsOpen(false);
       }
@@ -114,7 +110,11 @@ function Header() {
 
       <darken-layer ref={darkLayer} className={isOpen ? 'open' : ''}></darken-layer>
 
-      <hamburger-container ref={menuRef} className={isOpen ? 'open' : ''}>
+      <hamburger-container
+        ref={menuRef}
+        className={isOpen ? 'open' : ''}
+        style={{ transition: `transform cubic-bezier(0.075, 0.82, 0.165, 1) ${transitionDuration}ms` }}
+      >
         <navigation-btn
           onMouseDown={navigateToSection('home')}
           onTouchStart={navigateToSection('home')}
