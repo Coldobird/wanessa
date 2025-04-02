@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/wanessa/static/css/main.549d61be.css",
-    "main.js": "/wanessa/static/js/main.fb973f5d.js",
-    "static/js/453.aa81b95e.chunk.js": "/wanessa/static/js/453.aa81b95e.chunk.js",
-    "static/media/hero4.png": "/wanessa/static/media/hero4.280ebb6b325e24cd8cd1.png",
-    "static/media/hero.jxl": "/wanessa/static/media/hero.57f06392c0847054d604.jxl",
-    "static/media/about.webp": "/wanessa/static/media/about.ef4ef96480135502331e.webp",
-    "static/media/Pattern.svg": "/wanessa/static/media/Pattern.d527a12415876a94ddb1.svg",
-    "static/media/mainLogo.svg": "/wanessa/static/media/mainLogo.6ce66b5f317d369d3e7051d46333ed25.svg",
-    "index.html": "/wanessa/index.html",
-    "static/media/star.svg": "/wanessa/static/media/star.532754df61a3e043d8d478a9d1c6001c.svg",
-    "static/media/hamburgerMenu.svg": "/wanessa/static/media/hamburgerMenu.934e4ce7df55a41112795f683d22ad89.svg",
-    "main.549d61be.css.map": "/wanessa/static/css/main.549d61be.css.map",
-    "main.fb973f5d.js.map": "/wanessa/static/js/main.fb973f5d.js.map",
-    "453.aa81b95e.chunk.js.map": "/wanessa/static/js/453.aa81b95e.chunk.js.map"
+    "main.css": "/react-gh-pages/static/css/main.e45db70d.css",
+    "main.js": "/react-gh-pages/static/js/main.7389422c.js",
+    "static/js/453.aa81b95e.chunk.js": "/react-gh-pages/static/js/453.aa81b95e.chunk.js",
+    "static/media/hero4.png": "/react-gh-pages/static/media/hero4.280ebb6b325e24cd8cd1.png",
+    "static/media/hero.jxl": "/react-gh-pages/static/media/hero.57f06392c0847054d604.jxl",
+    "static/media/about.webp": "/react-gh-pages/static/media/about.ef4ef96480135502331e.webp",
+    "static/media/Pattern.svg": "/react-gh-pages/static/media/Pattern.e019167aba512a6ced88.svg",
+    "static/media/mainLogo.svg": "/react-gh-pages/static/media/mainLogo.24d4e5311a1d219edce1207fa4e5451c.svg",
+    "index.html": "/react-gh-pages/index.html",
+    "static/media/star.svg": "/react-gh-pages/static/media/star.d81e0c696f90665d69db5d469adfff08.svg",
+    "static/media/hamburgerMenu.svg": "/react-gh-pages/static/media/hamburgerMenu.934e4ce7df55a41112795f683d22ad89.svg",
+    "main.e45db70d.css.map": "/react-gh-pages/static/css/main.e45db70d.css.map",
+    "main.7389422c.js.map": "/react-gh-pages/static/js/main.7389422c.js.map",
+    "453.aa81b95e.chunk.js.map": "/react-gh-pages/static/js/453.aa81b95e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.549d61be.css",
-    "static/js/main.fb973f5d.js"
+    "static/css/main.e45db70d.css",
+    "static/js/main.7389422c.js"
   ]
 }
