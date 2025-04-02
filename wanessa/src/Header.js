@@ -23,7 +23,7 @@ function Header() {
   }, []);
 
   const transitionDuration = 500; // in ms (0.5s)
-  const threshold = transitionDuration - 400; // 400ms threshold
+  const threshold = transitionDuration - 100; // 400ms threshold
 
   const toggleMenu = (ev) => {
     ev.stopPropagation();
