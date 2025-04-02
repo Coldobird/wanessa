@@ -3,7 +3,7 @@ import './SocialProof.css';
 
 function SocialProof() {
   return (
-    <social-proof-container className='section'>
+    <social-proof-container className='section' id='depoimentos'>
       <h1>A galera que achou massa!</h1>
       <carousel-container >
         <TreatmentCard

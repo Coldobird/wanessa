@@ -3,7 +3,7 @@ import './TimeLine.css';
 
 function TimeLine() {
   return (
-    <time-line-container className='section'>
+    <time-line-container className='section' id='como-funciona'>
       <h1>Cuidar da mente é um ato de coragem. Vamos dar esse passo juntos?</h1>
       <cards-container>
         <line-container>

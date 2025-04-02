@@ -4,7 +4,7 @@ import './About.css';
 
 function About() {
   return (
-    <about-container className='section'>
+    <about-container className='section' id='sobre-mim'>
       <picture>
         <source srcSet={heroImg} type="image/jxl" />
         <img src={aboutImg} className="about-image" alt="Hero" />
