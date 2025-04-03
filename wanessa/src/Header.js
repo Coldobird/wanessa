@@ -1,7 +1,7 @@
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
 import mainLogo from './images/mainLogo.svg';
 import hamburgerMenu from './images/hamburgerMenu.svg';
 import './Header.css';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,30 +11,37 @@ function Header() {
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const darkLayer = useRef(null);
-
+  
   // Refs to track mouse/touch release and the time the transition started.
   const releaseRef = useRef(false);
   const transitionStartRef = useRef(0);
   const debounceTimeoutRef = useRef(null);
-
+  
   // Use useLayoutEffect to measure header height after render
   useLayoutEffect(() => {
     if (headerRef.current) {
       setHeaderHeight(headerRef.current.getBoundingClientRect().height);
     }
   }, []);
-
+  
   const transitionDuration = 500; // in ms (0.5s)
-  const threshold = transitionDuration - 100; // 400ms threshold
-
+  const threshold = transitionDuration - 200;
+  
+  // Helper function to log and return the scroll target element.
+  const logScrollTarget = () => {
+    // Use document.scrollingElement if available; otherwise fallback to document.documentElement.
+    const scrollContainer = document.scrollingElement || document.documentElement;
+    return scrollContainer;
+  };
+  
   const toggleMenu = (ev) => {
     ev.stopPropagation();
-
+  
     // Prevent opening if debounce is active (i.e. the menu was closed too recently)
     if (!isOpen && debounceTimeoutRef.current !== null) {
       return;
     }
-
+  
     const newOpen = !isOpen;
     setIsOpen(newOpen);
     if (newOpen) {
@@ -51,10 +58,9 @@ function Header() {
       }, threshold);
     }
   };
-
-  // When the user releases the mouse or touch, check if the elapsed time
-  // is at least the threshold. If not, wait the remaining time before clearing justOpened.
-  const handleMouseUpOrTouchEnd = (ev) => {
+  
+  // Memoize the mouse/touch end handler
+  const handleMouseUpOrTouchEnd = useCallback((ev) => {
     if (isOpen && justOpened) {
       releaseRef.current = true;
       const elapsed = Date.now() - transitionStartRef.current;
@@ -68,8 +74,8 @@ function Header() {
         }, threshold - elapsed);
       }
     }
-  };
-
+  }, [isOpen, justOpened, threshold]);
+  
   useEffect(() => {
     document.addEventListener('mouseup', handleMouseUpOrTouchEnd);
     document.addEventListener('touchend', handleMouseUpOrTouchEnd);
@@ -77,9 +83,10 @@ function Header() {
       document.removeEventListener('mouseup', handleMouseUpOrTouchEnd);
       document.removeEventListener('touchend', handleMouseUpOrTouchEnd);
     };
-  }, [isOpen, justOpened]);
-
-  const handleOutsideClick = (ev) => {
+  }, [handleMouseUpOrTouchEnd]);
+  
+  // Memoize the outside click handler
+  const handleOutsideClick = useCallback((ev) => {
     if (
       ev.target.closest('hamburger-container') ||
       ev.target.closest('button.hamburguer')
@@ -87,15 +94,15 @@ function Header() {
       return;
     }
     setIsOpen(false);
-    // Also start debounce timer if the menu is closed via an outside click
+    // Start debounce timer if the menu is closed via an outside click
     if (debounceTimeoutRef.current !== null) {
       clearTimeout(debounceTimeoutRef.current);
     }
     debounceTimeoutRef.current = setTimeout(() => {
       debounceTimeoutRef.current = null;
     }, threshold);
-  };
-
+  }, [threshold]);
+  
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
     document.addEventListener('touchstart', handleOutsideClick);
@@ -103,19 +110,20 @@ function Header() {
       document.removeEventListener('mousedown', handleOutsideClick);
       document.removeEventListener('touchstart', handleOutsideClick);
     };
-  }, []);
-
+  }, [handleOutsideClick]);
+  
   const navigateToSection = (sectionId) => {
     return (ev) => {
       if (justOpened) return;
       const section = document.getElementById(sectionId);
-      const root = document.getElementById('root');
+      const scrollContainer = logScrollTarget();
       if (section) {
         const toScrollPosition =
-          section.getClientRects()[0].top - headerHeight + root.scrollTop;
-        root.scrollTo({ top: toScrollPosition, behavior: "smooth" });
+          section.getClientRects()[0].top -
+          headerHeight +
+          scrollContainer.scrollTop;
+        scrollContainer.scrollTo({ top: toScrollPosition, behavior: "smooth" });
         setIsOpen(false);
-        // Start debounce timer on close via navigation as well.
         if (debounceTimeoutRef.current !== null) {
           clearTimeout(debounceTimeoutRef.current);
         }
@@ -125,7 +133,7 @@ function Header() {
       }
     };
   };
-
+  
   return (
     <header-container ref={headerRef}>
       <img src={mainLogo} className="wanessaLogo" alt="Wanessa logo" />
@@ -137,13 +145,15 @@ function Header() {
       >
         <img src={hamburgerMenu} className="hamburgerMenu" alt="hamburger menu" />
       </button>
-
+  
       <darken-layer ref={darkLayer} className={isOpen ? 'open' : ''}></darken-layer>
-
+  
       <hamburger-container
         ref={menuRef}
         className={isOpen ? 'open' : ''}
-        style={{ transition: `transform cubic-bezier(0.075, 0.82, 0.165, 1) ${transitionDuration}ms` }}
+        style={{
+          transition: `transform cubic-bezier(0.075, 0.82, 0.165, 1) ${transitionDuration}ms`
+        }}
       >
         <navigation-btn
           onMouseDown={navigateToSection('home')}
