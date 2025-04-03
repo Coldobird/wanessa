@@ -1,9 +1,14 @@
-import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
 import mainLogo from './images/mainLogo.svg';
 import hamburgerMenu from './images/hamburgerMenu.svg';
 import './Header.css';
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
 
 function Header() {
+  // Detect if the device supports touch
+  const isTouchDevice =
+    typeof window !== 'undefined' &&
+    ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
   const [isOpen, setIsOpen] = useState(false);
   const [justOpened, setJustOpened] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -11,37 +16,33 @@ function Header() {
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const darkLayer = useRef(null);
-  
-  // Refs to track mouse/touch release and the time the transition started.
+
+  // Refs to track the release status and transition timing.
   const releaseRef = useRef(false);
   const transitionStartRef = useRef(0);
   const debounceTimeoutRef = useRef(null);
-  
-  // Use useLayoutEffect to measure header height after render
+
   useLayoutEffect(() => {
     if (headerRef.current) {
       setHeaderHeight(headerRef.current.getBoundingClientRect().height);
     }
   }, []);
-  
+
   const transitionDuration = 500; // in ms (0.5s)
   const threshold = transitionDuration - 200;
-  
-  // Helper function to log and return the scroll target element.
+
+  // Returns the scrolling element.
   const logScrollTarget = () => {
-    // Use document.scrollingElement if available; otherwise fallback to document.documentElement.
-    const scrollContainer = document.scrollingElement || document.documentElement;
-    return scrollContainer;
+    return document.scrollingElement || document.documentElement;
   };
-  
+
   const toggleMenu = (ev) => {
     ev.stopPropagation();
-  
-    // Prevent opening if debounce is active (i.e. the menu was closed too recently)
+
+    // Only trigger toggle if debounce is not active.
     if (!isOpen && debounceTimeoutRef.current !== null) {
       return;
     }
-  
     const newOpen = !isOpen;
     setIsOpen(newOpen);
     if (newOpen) {
@@ -49,7 +50,6 @@ function Header() {
       releaseRef.current = false;
       transitionStartRef.current = Date.now();
     } else {
-      // On close, start debounce timer so the button can't trigger an immediate re-open.
       if (debounceTimeoutRef.current !== null) {
         clearTimeout(debounceTimeoutRef.current);
       }
@@ -58,8 +58,8 @@ function Header() {
       }, threshold);
     }
   };
-  
-  // Memoize the mouse/touch end handler
+
+  // This effect resets the "justOpened" flag after the proper delay.
   const handleMouseUpOrTouchEnd = useCallback((ev) => {
     if (isOpen && justOpened) {
       releaseRef.current = true;
@@ -75,7 +75,7 @@ function Header() {
       }
     }
   }, [isOpen, justOpened, threshold]);
-  
+
   useEffect(() => {
     document.addEventListener('mouseup', handleMouseUpOrTouchEnd);
     document.addEventListener('touchend', handleMouseUpOrTouchEnd);
@@ -84,8 +84,8 @@ function Header() {
       document.removeEventListener('touchend', handleMouseUpOrTouchEnd);
     };
   }, [handleMouseUpOrTouchEnd]);
-  
-  // Memoize the outside click handler
+
+  // Outside click handler.
   const handleOutsideClick = useCallback((ev) => {
     if (
       ev.target.closest('hamburger-container') ||
@@ -94,7 +94,6 @@ function Header() {
       return;
     }
     setIsOpen(false);
-    // Start debounce timer if the menu is closed via an outside click
     if (debounceTimeoutRef.current !== null) {
       clearTimeout(debounceTimeoutRef.current);
     }
@@ -102,7 +101,7 @@ function Header() {
       debounceTimeoutRef.current = null;
     }, threshold);
   }, [threshold]);
-  
+
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
     document.addEventListener('touchstart', handleOutsideClick);
@@ -111,7 +110,8 @@ function Header() {
       document.removeEventListener('touchstart', handleOutsideClick);
     };
   }, [handleOutsideClick]);
-  
+
+  // Navigation: only trigger on the first touch.
   const navigateToSection = (sectionId) => {
     return (ev) => {
       if (justOpened) return;
@@ -133,21 +133,23 @@ function Header() {
       }
     };
   };
-  
+
   return (
     <header-container ref={headerRef}>
       <img src={mainLogo} className="wanessaLogo" alt="Wanessa logo" />
       <button
         ref={buttonRef}
-        onMouseDown={toggleMenu}
-        onTouchStart={toggleMenu}
+        // On touch devices, only attach onTouchStart to prevent duplicate events.
+        {...(isTouchDevice
+          ? { onTouchStart: toggleMenu }
+          : { onMouseDown: toggleMenu })}
         className="hamburguer"
       >
         <img src={hamburgerMenu} className="hamburgerMenu" alt="hamburger menu" />
       </button>
-  
+
       <darken-layer ref={darkLayer} className={isOpen ? 'open' : ''}></darken-layer>
-  
+
       <hamburger-container
         ref={menuRef}
         className={isOpen ? 'open' : ''}
@@ -156,38 +158,44 @@ function Header() {
         }}
       >
         <navigation-btn
-          onMouseDown={navigateToSection('home')}
-          onTouchStart={navigateToSection('home')}
+          {...(isTouchDevice
+            ? { onTouchStart: navigateToSection('home') }
+            : { onMouseDown: navigateToSection('home') })}
         >
           Home
         </navigation-btn>
         <navigation-btn
-          onMouseDown={navigateToSection('sintomas')}
-          onTouchStart={navigateToSection('sintomas')}
+          {...(isTouchDevice
+            ? { onTouchStart: navigateToSection('sintomas') }
+            : { onMouseDown: navigateToSection('sintomas') })}
         >
           Sintomas
         </navigation-btn>
         <navigation-btn
-          onMouseDown={navigateToSection('como-funciona')}
-          onTouchStart={navigateToSection('como-funciona')}
+          {...(isTouchDevice
+            ? { onTouchStart: navigateToSection('como-funciona') }
+            : { onMouseDown: navigateToSection('como-funciona') })}
         >
           Como Funciona
         </navigation-btn>
         <navigation-btn
-          onMouseDown={navigateToSection('depoimentos')}
-          onTouchStart={navigateToSection('depoimentos')}
+          {...(isTouchDevice
+            ? { onTouchStart: navigateToSection('depoimentos') }
+            : { onMouseDown: navigateToSection('depoimentos') })}
         >
           Depoimentos
         </navigation-btn>
         <navigation-btn
-          onMouseDown={navigateToSection('sobre-mim')}
-          onTouchStart={navigateToSection('sobre-mim')}
+          {...(isTouchDevice
+            ? { onTouchStart: navigateToSection('sobre-mim') }
+            : { onMouseDown: navigateToSection('sobre-mim') })}
         >
           Sobre Mim
         </navigation-btn>
         <navigation-btn
-          onMouseDown={navigateToSection('agendar')}
-          onTouchStart={navigateToSection('agendar')}
+          {...(isTouchDevice
+            ? { onTouchStart: navigateToSection('agendar') }
+            : { onMouseDown: navigateToSection('agendar') })}
         >
           Agendar
         </navigation-btn>
